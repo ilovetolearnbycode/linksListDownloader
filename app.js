@@ -6,7 +6,6 @@ const PORT = 8080;
 const cors = require('cors');
 app.listen(process.env.PORT||PORT,()=>console.log('Running on Port:'+PORT));
 
-app.use(cors);
 app.use(express.static('public'));
 app.use(express.json());
 app.get('/',(req,res)=>{
@@ -14,6 +13,7 @@ app.get('/',(req,res)=>{
 });
 
 // handling the post request
+app.use(cors);
 app.post('/sendDataToDownload',(req,res)=>{
     let data = req.body;
     let urlsList = getURLlist(data);
